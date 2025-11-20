@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Impact Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main class="dashboard-container">
+
+        <section class="project-list">
+            <h2>Charities List</h2>
+            <button id="reset-button" style="width: 100%; padding: 10px; margin-bottom: 15px;">Reset Simulation</button>
+
+            <div class="donation-amount-selector">
+                <h4>Amount to Donate</h4>
+                <div class="preset-amounts">
+                    <button class="amount-btn">$5</button>
+                    <button class="amount-btn">$10</button>
+                    <button class="amount-btn">$50</button>
+                    <button class="amount-btn">$100</button>
+                    <input type="number" class="custom-amount-input" placeholder="Other">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-info">
+                    <a href="https://www.dogstrust.org.uk/" target="_blank" class="charity-link">
+                        <h3>Help Animals Charity</h3>
+                    </a>
+                    <div class="card-stats">
+                        <p>Donated: <span id="animal-donated-amount">$0</span></p>
+                        <p>Spent: <span id="animal-spent-amount">$0</span></p>
+                    </div>
+                </div>
+                <button class="card-button" data-charity-id="animal">Donate</button>
+            </div>
+
+            <div class="card">
+                <div class="card-info">
+                    <a href="https://www.woodlandtrust.org.uk/" target="_blank" class="charity-link">
+                        <h3>Environmental Charity</h3>
+                    </a>
+                    <div class="card-stats">
+                        <p>Donated: <span id="environmental-donated-amount">$0</span></p>
+                        <p>Spent: <span id="environmental-spent-amount">$0</span></p>
+                    </div>
+
+                </div>
+                <button class="card-button" data-charity-id="environmental">Donate</button>
+            </div>
+
+            <div class="card">
+                <div class="card-info">
+                    <a href="https://www.trusselltrust.org/" target="_blank" class="charity-link">
+                        <h3>Promote Education Charity</h3>
+                    </a>
+                    <div class="card-stats">
+                        <p>Donated: <span id="education-donated-amount">$0</span></p>
+                        <p>Spent: <span id="education-spent-amount">$0</span></p>
+                    </div>
+                </div>
+                <button class="card-button" data-charity-id="education">Donate</button>
+            </div>
+            
+            <section id="log-container">
+                <h4>Activity Log</h4>
+                <ul id="log-list">
+                    </ul>
+            </section>
+
+        </section> 
+
+        </section>
+
+        <section class="simulation-view">
+            </section>
+
+    </main>
+
+    <script src="js/script.js" defer></script>
+
+</body>
+</html>

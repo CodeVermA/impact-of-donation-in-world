@@ -1,0 +1,265 @@
+/* Add this to the TOP of style.css */
+:root {
+    --primary-color: #2a9d8f;
+    --background-color: #f8f9fa;
+    --surface-color: #ffffff;
+    --text-color: #264653;
+    --subtle-text-color: #6c757d;
+    --border-color: #dee2e6;
+}
+
+/* Animation for new items */
+.tile img.new-item {
+    animation: pop-in 0.5s ease-out forwards;
+}
+
+@keyframes pop-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Basic setup for the whole page */
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    margin: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* This is the main container for the split screen */
+.dashboard-container {
+    display: flex;
+    height: 100vh; /* Make it take the full viewport height */
+}
+
+/* Styling for the LEFT column */
+.project-list {
+    flex-basis: 400px; /* Give it a fixed base width */
+    flex-shrink: 0; /* Prevent it from shrinking */
+    padding: 20px;
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
+    overflow-y: auto; /* Add a scrollbar if content overflows */
+}
+
+.project-list h2 {
+    border-bottom: 2px solid #00a896;
+    padding-bottom: 10px;
+}
+
+/* Styling for the RIGHT column */
+.simulation-view {
+    width: 100%; /* Take up the remaining space */
+    padding: 10px;
+
+    /* We'll use CSS Grid to create our tiles */
+    display: grid;
+    /* Create 10 columns of equal width */
+    grid-template-columns: repeat(20, 1fr);
+    /* Create 10 rows of equal height */
+    grid-template-rows: repeat(10, 1fr);
+
+    background-image: url('../assets/images/ground.png');
+    /* Repeat the image to fill the container (this is the default behavior) */
+    background-repeat: repeat;
+
+    perspective: 1000px; /* Creates the 3D space */
+    transform: rotateX(25deg); /* Tilts the grid on its X-axis */
+    border-radius: 10px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+}
+
+.tile {
+    /* Change the border to be slightly visible */
+    border: 1px solid transparent; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out; /* Smooth transition for hover */
+}
+
+/* In style.css, add a new rule for the hover effect */
+.tile:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Highlight effect */
+    cursor: pointer;
+}
+
+/* In style.css, modify the .tile img rule */
+.tile img {
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+    /* This adds a small, blurry shadow below the image */
+    filter: drop-shadow(2px 4px 3px rgba(0,0,0,0.4));
+}
+
+/* STYLING FOR THE CHARITY CARDS */
+.card {
+    display: flex;
+    justify-content: space-between; /* Pushes info and button apart */
+    align-items: center; /* Vertically aligns them */
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card-info h3 {
+    margin: 0 0 4px 0;
+    font-size: 1.1em;
+}
+
+.card-info p {
+    margin: 4px 0 0 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.card-button {
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.card-button:hover {
+    background-color: #0056b3;
+}
+
+/* This styles the new charity name link */
+.charity-link {
+    color: inherit; /* Makes the link color the same as the surrounding text */
+    text-decoration: none; /* Removes the default underline */
+    border-radius: 100px; /* Prepare the corners for the button shape */
+    display: inline-block; /* Allows padding and other properties to be applied */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition effect */
+}
+
+/* Style the H3 inside the link to look like normal text */
+.charity-link h3 {
+    margin: 0; /* Remove default heading margin */
+    padding: 10px 15px; /* This padding will become the button's size */
+    font-size: 1.1em; /* Keep your original font size */
+    font-weight: normal; /* Make it look less like a heading */
+    transition: color 0.3s ease; /* Ensure text color transition is smooth */
+}
+
+/* This is where the magic happens: apply button styles on hover */
+.charity-link:hover {
+    background-color: #c4c9cf; /* The blue button background */
+    color: rgb(0, 0, 0); /* This will make the h3 text inside it white */
+}
+
+.donation-amount-selector {
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.donation-amount-selector h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.preset-amounts {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line on small screens */
+    gap: 10px; /* Adds space between all items */
+}
+
+.amount-btn {
+    flex-grow: 1; /* Allows buttons to share space equally */
+    padding: 10px;
+    font-size: 1em;
+    font-family: 'Courier New';
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.amount-btn:hover {
+    background-color: #e9e9e9;
+}
+
+.amount-btn.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.custom-amount-input {
+    width: 80px; /* A fixed width for the 'Other' input */
+    padding: 10px;
+    font-family: 'Courier New';
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    /* Removes the arrows from the number input for a cleaner look */
+    -moz-appearance: textfield;
+}
+
+.custom-amount-input.selected {
+    border-color: #0056b3;
+    background-color: #f0f8ff; /* A light blue tint */
+}
+
+.custom-amount-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    outline: none; /* Removes the default browser outline */
+}
+
+.custom-amount-input::-webkit-outer-spin-button,
+.custom-amount-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#log-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+#log-container h4 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+#log-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px; /* Give it a max height */
+    overflow-y: auto; /* Add a scrollbar if it gets too long */
+    font-size: 0.9em;
+}
+
+#log-list li {
+    padding: 8px 5px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#log-list li:last-child {
+    border-bottom: none;
+}
